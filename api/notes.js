@@ -1,9 +1,5 @@
-const connectToMongo = require('../db');
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-
-connectToMongo();
 const app = express();
 
 app.use(cors({
@@ -12,11 +8,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Handle preflight requests for all routes
-app.options('*', cors());
+app.options('*', cors()); // Handle preflight requests for all routes
 
 app.use(express.json());
-
 app.use('/', require('../routes/notes'));
 
 module.exports = app;

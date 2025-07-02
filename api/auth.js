@@ -1,23 +1,17 @@
-const connectToMongo = require('../db');
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-
-connectToMongo();
 const app = express();
 
 app.use(cors({
-    origin: '*',
+    origin: '*', // Or your Netlify frontend URL for more security
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Handle preflight requests for all routes
-app.options('*', cors());
+app.options('*', cors()); // This handles preflight requests
 
 app.use(express.json());
-
-app.use('/', require('../routes/auth'));
+app.use('/', require('../routes/auth')); // or notes
 
 module.exports = app;
 module.exports.handler = (req, res) => app(req, res);
