@@ -29,5 +29,4 @@ app.use(express.json());
 app.use('/', require('../routes/auth')); // or notes
 
 module.exports = app;
-module.exports = router;
 module.exports.handler = (req, res) => app(req, res);
