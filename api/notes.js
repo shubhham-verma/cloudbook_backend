@@ -1,6 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const app = express.Router();
+const app = express();
+
+const router = express.Router();
+router.post('/login', (req, res) => {
+    res.json({ message: 'Login endpoint working!' });
+});
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); // Or your Netlify URL
@@ -24,4 +29,5 @@ app.use(express.json());
 app.use('/', require('../routes/notes'));
 
 module.exports = app;
+module.exports = router;
 module.exports.handler = (req, res) => app(req, res);
