@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
+const app = express.Router();
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); // Or your Netlify URL
