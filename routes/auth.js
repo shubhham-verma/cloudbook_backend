@@ -11,6 +11,10 @@ const fetchuser = require('../middleware/fetchuser')
 const JWT_SECRET = '_estefani_is_a_cool_name_'
 
 
+router.get('/test', (req, res) => {
+    res.json({ message: 'Test route working!' });
+});
+
 //  !! ROUTE : 1 Creating a user using POST : "/api/auth/createuser". No login required
 router.post('/createuser', [
     body('name').isLength({ min: 5 }).withMessage('Name must be more than 5 characters'),
