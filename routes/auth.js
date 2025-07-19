@@ -10,6 +10,16 @@ const fetchuser = require('../middleware/fetchuser')
 // ?? ideally this sign string should be stored in en evironment variable
 const JWT_SECRET = process.env.JWT_SECRET;
 
+// !! non essential route for when cron job is hit 
+router.get('/cron_job', async (req, res) => {
+    try {
+        res.status(200).send({ message: "Cron job successful, Server is up and running!!!" });
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Some error ocurred');
+    }
+});
 
 //  !! ROUTE : 1 Creating a user using POST : "/api/auth/createuser". No login required
 router.post('/createuser', [
