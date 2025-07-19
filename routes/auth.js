@@ -8,7 +8,7 @@ const fetchuser = require('../middleware/fetchuser')
 
 
 // ?? ideally this sign string should be stored in en evironment variable
-const JWT_SECRET = '_estefani_is_a_cool_name_'
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 //  !! ROUTE : 1 Creating a user using POST : "/api/auth/createuser". No login required
